@@ -20,11 +20,11 @@ def move(head, tail, direction):
             tail = (head[0], head[1] + 1)
     elif direction == "U":
         head = (head[0] - 1, head[1])
-        if tail[0] == head[0] - 2:
+        if tail[0] == head[0] + 2:
             tail = (head[0] + 1, head[1])
     elif direction == "D":
         head = (head[0] + 1, head[1])
-        if tail[0] == head[0] + 2:
+        if tail[0] == head[0] - 2:
             tail = (head[0] - 1, head[1])
     return head, tail
 
@@ -105,11 +105,8 @@ def main():
         for instruction in instructions(f):
             direction, repeat = instruction.split(" ")
             for _ in range(int(repeat)):
-                print("move " + direction)
                 head, tail = move(head, tail, direction)
                 visited.add(tail)
-                print("Tail is at " + str(tail) + " and head is at " + str(head))
-                print("Visited positions: " + str(visited))
 
     print(len(visited))
 
